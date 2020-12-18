@@ -6,24 +6,24 @@ pkgbase = obs-studio-browser
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = cef-minimal
 	makedepends = cmake
 	makedepends = git
+	makedepends = jack
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
-	makedepends = x264
-	makedepends = jack
-	makedepends = vlc
-	makedepends = swig
 	makedepends = luajit
 	makedepends = python
-	makedepends = cef-minimal-3770
+	makedepends = swig
+	makedepends = vlc
+	makedepends = x264
+	depends = curl
 	depends = ffmpeg
+	depends = gtk-update-icon-cache
 	depends = jansson
 	depends = libxinerama
 	depends = libxkbcommon-x11
 	depends = qt5-x11extras
-	depends = curl
-	depends = gtk-update-icon-cache
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
 	optdepends = jack: JACK Support
@@ -35,11 +35,9 @@ pkgbase = obs-studio-browser
 	provides = obs-studio=26.1.0
 	conflicts = obs-studio
 	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=26.1.0
-	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = obs-studio-browser
 
