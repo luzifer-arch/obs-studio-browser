@@ -1,4 +1,5 @@
-# Maintainer: Alice Gaudon <alice at gaudon dot pro>
+# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Contributor: Alice Gaudon <alice at gaudon dot pro>
 # Contributor: Benjamin Klettbach <b dot klettbach at gmail dot com >
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
@@ -47,7 +48,7 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=(
 	"$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-	"git+https://github.com/obsproject/obs-browser.git"
+	"obs-browser::git+https://github.com/obsproject/obs-browser.git"
 )
 sha256sums=('SKIP' 'SKIP')
 
