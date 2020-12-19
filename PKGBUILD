@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=26.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -48,14 +48,12 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=(
 	"$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-	"obs-browser::git+https://github.com/obsproject/obs-browser.git"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
 	cd $pkgname
-	git config submodule.plugins/obs-browser.url $srcdir/obs-browser
-	git submodule update
+	git submodule update --init --recursive
 }
 
 build() {

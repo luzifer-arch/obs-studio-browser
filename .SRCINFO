@@ -35,8 +35,6 @@ pkgbase = obs-studio-browser
 	provides = obs-studio=26.1.0
 	conflicts = obs-studio
 	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=26.1.0
-	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = obs-studio-browser
