@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=26.1.2
+pkgver=27.0.0
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
@@ -20,6 +20,7 @@ depends=(
 	"libxinerama"
 	"libxkbcommon-x11"
 	"qt5-x11extras"
+	"pipewire"
 )
 makedepends=(
 	"cef-minimal"
