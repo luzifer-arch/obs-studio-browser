@@ -23,7 +23,7 @@ depends=(
 	"pipewire"
 )
 makedepends=(
-	"cef-minimal"
+	"cef-minimal-obs"
 	"cmake"
 	"git"
 	"jack"
