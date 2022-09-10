@@ -32,6 +32,7 @@ makedepends=(
   "libfdk-aac"
   "libxcomposite"
   "luajit"
+  "mbedtls"
   "python"
   "swig"
   "vlc"
