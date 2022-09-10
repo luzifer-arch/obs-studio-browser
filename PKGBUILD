@@ -17,6 +17,7 @@ depends=(
   "ffmpeg"
   "gtk-update-icon-cache"
   "jansson"
+  "libajantv2"
   "libxinerama"
   "libxkbcommon-x11"
   "qt5-x11extras"
