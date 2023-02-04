@@ -1,6 +1,6 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. Built with the browser plugin.
-	pkgver = 29.0.1
+	pkgver = 29.0.2
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -36,9 +36,9 @@ pkgbase = obs-studio-browser
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual camera output
-	provides = obs-studio=29.0.1
+	provides = obs-studio=29.0.2
 	conflicts = obs-studio
-	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=29.0.1
+	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=29.0.2
 	sha256sums = SKIP
 
 pkgname = obs-studio-browser
