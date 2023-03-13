@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=29.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -52,12 +52,15 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=(
   "$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
+  "https://github.com/obsproject/obs-studio/commit/2e79d4c9.patch"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+  '96ea913149377b324d132aa56964a72e5263e06a8b8d2103c1708b04752f3b9d')
 
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
+  patch -Np1 <"$srcdir"/2e79d4c9.patch # Fix build with FFmpeg 6
 }
 
 build() {
