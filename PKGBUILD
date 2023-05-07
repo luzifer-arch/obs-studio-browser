@@ -6,8 +6,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=29.0.2
-pkgrel=2
+pkgver=29.1.0
+pkgrel=0
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -18,14 +18,18 @@ depends=(
   "gtk-update-icon-cache"
   "jansson"
   "libajantv2"
+  "libxcomposite"
   "libxinerama"
   "libxkbcommon-x11"
   "mbedtls"
-  "qt5-x11extras"
   "pciutils"
   "pipewire"
+  "qt5-x11extras"
+  "rnnoise"
+  "x264"
 )
 makedepends=(
+  "asio"
   "cef-minimal-obs"
   "cmake"
   "git"
@@ -33,15 +37,14 @@ makedepends=(
   "libfdk-aac"
   "libxcomposite"
   "luajit"
+  "nlohmann-json"
   "python"
+  "sndio"
   "swig"
   "vlc"
-  "x264"
+  "websocketpp"
 )
 optdepends=(
-  "libfdk-aac: FDK AAC codec support"
-  "libxcomposite: XComposite capture support"
-  "jack: JACK Support"
   "vlc: VLC Media Source"
   "swig: Scripting"
   "luajit: Lua scripting"
@@ -52,15 +55,15 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=(
   "$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-  "https://github.com/obsproject/obs-studio/commit/2e79d4c9.patch"
+  0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch
 )
 sha256sums=('SKIP'
-  '96ea913149377b324d132aa56964a72e5263e06a8b8d2103c1708b04752f3b9d')
+            '9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c')
 
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
-  patch -Np1 <"$srcdir"/2e79d4c9.patch # Fix build with FFmpeg 6
+  patch -Np1 <"$srcdir/0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 }
 
 build() {
