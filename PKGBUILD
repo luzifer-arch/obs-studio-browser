@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=29.1.3
+pkgver=30.0.0
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
@@ -16,15 +16,17 @@ depends=(
   "curl"
   "ffmpeg"
   "gtk-update-icon-cache"
+  "jack"
   "jansson"
-  "libajantv2"
   "libxcomposite"
   "libxinerama"
   "libxkbcommon-x11"
   "mbedtls"
   "pciutils"
   "pipewire"
+  "qrcodegencpp-cmake"
   "qt5-x11extras"
+  "qt6-svg"
   "rnnoise"
   "x264"
 )
@@ -33,7 +35,6 @@ makedepends=(
   "cef-minimal-obs"
   "cmake"
   "git"
-  "jack"
   "libfdk-aac"
   "libxcomposite"
   "luajit"
@@ -64,27 +65,24 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
-
-  mkdir -p build
-  cd build
-
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+  cmake -B build -S $pkgname \
     -DBUILD_BROWSER=ON \
     -DCEF_ROOT_DIR="/opt/cef" \
-    -DOBS_VERSION_OVERRIDE=$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_AJA=OFF \
+    -DENABLE_JACK=ON \
+    -DENABLE_LIBFDK=ON \
     -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
-    ..
+    -DENABLE_VST=ON \
+    -DENABLE_WEBRTC=OFF \
+    -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" \
+    -Wno-dev
 
-  make
+  cmake --build build
 }
 
 package() {
-  cd $pkgname/build
-
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim: ts=2:sw=2:expandtab
