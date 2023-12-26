@@ -67,6 +67,7 @@ prepare() {
 build() {
   cmake -B build -S $pkgname \
     -DBUILD_BROWSER=ON \
+    -DCALM_DEPRECATION=ON \
     -DCEF_ROOT_DIR="/opt/cef" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_AJA=OFF \
