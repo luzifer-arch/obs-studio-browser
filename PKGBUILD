@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=30.1.0
+pkgver=30.1.1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
@@ -57,7 +57,7 @@ conflicts=("obs-studio")
 source=(
   "$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
 )
-sha256sums=('SKIP')
+sha256sums=('4ee676256816b57a9240ef9ca0c11d92f53e94207acb0614e6835a1aac32cef9')
 
 prepare() {
   cd $pkgname
