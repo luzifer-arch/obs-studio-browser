@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=30.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -18,7 +18,9 @@ depends=(
   "gtk-update-icon-cache"
   "jack"
   "jansson"
+  "libdatachannel"
   "libxcomposite"
+  "libxdamage"
   "libxinerama"
   "libxkbcommon-x11"
   "mbedtls"
@@ -75,7 +77,7 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
     -DENABLE_VST=ON \
-    -DENABLE_WEBRTC=OFF \
+    -DENABLE_WEBRTC=ON \
     -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" \
     -Wno-dev
 
