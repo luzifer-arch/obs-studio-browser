@@ -30,6 +30,7 @@ depends=(
   "qt5-x11extras"
   "qt6-svg"
   "rnnoise"
+  "uthash"
   "x264"
 )
 makedepends=(
@@ -58,30 +59,32 @@ provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=(
   "$pkgname::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
-  0001-obs-ffmpeg-Fix-incompatible-pointer-types-with-FFmpe.patch
+  "nv-codec-headers.tar.gz::https://github.com/FFmpeg/nv-codec-headers/releases/download/n12.1.14.0/nv-codec-headers-12.1.14.0.tar.gz"
 )
+# XXX nv-codec-headers are kept back at version n12.1.14.0 due to OBS not supporting any newer version
 sha256sums=('0390743a85c3294abdb73ddf7d5d60354b5283f77cc9680026b2641600ae5384'
-            'f4356ddabd4b54662f685ec88432e2830cdeb1904665d14c64d2daa3ea7d254e')
+            '62b30ab37e4e9be0d0c5b37b8fee4b094e38e570984d56e1135a6b6c2c164c9f')
 
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
-  patch -Np1 <"$srcdir"/0001-obs-ffmpeg-Fix-incompatible-pointer-types-with-FFmpe.patch
 }
 
 build() {
   cmake -B build -S $pkgname \
-    -DBUILD_BROWSER=ON \
-    -DCALM_DEPRECATION=ON \
-    -DCEF_ROOT_DIR="/opt/cef" \
+    -DFFnvcodec_INCLUDE_DIR="nv-codec-headers-12.1.14.0/include/" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_BROWSER=ON \
+    -DENABLE_VST=ON \
+    -DENABLE_VLC=OFF \
+    -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
     -DENABLE_AJA=OFF \
     -DENABLE_JACK=ON \
     -DENABLE_LIBFDK=ON \
-    -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
-    -DENABLE_VST=ON \
     -DENABLE_WEBRTC=ON \
     -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" \
+    -DCALM_DEPRECATION=ON \
+    -DCEF_ROOT_DIR="/opt/cef" \
     -Wno-dev
 
   cmake --build build
