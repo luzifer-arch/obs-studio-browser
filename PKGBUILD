@@ -71,6 +71,9 @@ prepare() {
 }
 
 build() {
+  # Mitigate `error: ‘sample_fmts’ is deprecated` in v31.x
+  export CFLAGS+=" -Wno-error=deprecated-declarations"
+
   cmake -B build -S $pkgname \
     -DFFnvcodec_INCLUDE_DIR="nv-codec-headers-12.1.14.0/include/" \
     -DCMAKE_INSTALL_PREFIX=/usr \
