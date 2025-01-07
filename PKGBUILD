@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=31.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -77,7 +77,7 @@ build() {
   cmake -B build -S $pkgname \
     -DFFnvcodec_INCLUDE_DIR="nv-codec-headers-12.1.14.0/include/" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_BROWSER=ON \
+    -DENABLE_BROWSER=ON \
     -DENABLE_VST=ON \
     -DENABLE_VLC=OFF \
     -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
