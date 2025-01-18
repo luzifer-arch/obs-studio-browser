@@ -6,8 +6,8 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=31.0.0
-pkgrel=2
+pkgver=31.0.1
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. Built with the browser plugin."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -62,7 +62,7 @@ source=(
   "nv-codec-headers.tar.gz::https://github.com/FFmpeg/nv-codec-headers/releases/download/n12.1.14.0/nv-codec-headers-12.1.14.0.tar.gz"
 )
 # XXX nv-codec-headers are kept back at version n12.1.14.0 due to OBS not supporting any newer version
-sha256sums=('fe4589e5c8f9d657d91c6ad51eb55f20e685fa0d3cb8d57d05e71195a82cc7ad'
+sha256sums=('6a06481b64bf499e2000d5fe2da42a81818f4b2affb4a5bb46a62cfefd49ce92'
             '62b30ab37e4e9be0d0c5b37b8fee4b094e38e570984d56e1135a6b6c2c164c9f')
 
 prepare() {
